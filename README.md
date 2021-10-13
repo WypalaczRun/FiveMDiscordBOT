@@ -23,6 +23,6 @@ Edit config.js with your own settings
 
 Wypalacz#2929
 
-Djinn#0001)
+Djinn#0001
 
 [https://github.com/WypalaczRun/FiveMDiscordBOT](https://github.com/WypalaczRun/FiveMDiscordBOT)
