@@ -1,5 +1,5 @@
 module.exports = {
-    token: "",
+    token: "NDg0NTUzMzUzMTI5NDkyNTAw.W4dZeQ.yqdz8UGV485GKyggzMMsrGY218U",
     prefix: "!",
     canalComandos: ['870972264777138176'],
     donos: ['188891718639288321'],
