@@ -1,7 +1,7 @@
 const config = require("./config.js");
 const { Collection, Client } = require("discord.js");
 const fs = require('fs');
-const client = new Client({ disableEveryone: true, fetchAllMembers: true, ws: { properties: { $browser: "Discord iOS" }}});
+const client = new Client({ disableEveryone: true, fetchAllMembers: true});
 const MysqlManager = require('./database.js');
 const Embed = require('./embed.js');
 

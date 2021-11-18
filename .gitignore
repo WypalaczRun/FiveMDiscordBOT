@@ -12,4 +12,3 @@ yarn.lock
 
 # Ignore settings files
 .npmrc
-config.js
