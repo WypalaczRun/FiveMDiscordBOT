@@ -1,5 +1,5 @@
 # PhoenixBOT
-> Discord BOT with anything a FiveM Store needs.
+> Discord BOT with everything a FiveM Store needs.
 
 ## Installation
 
@@ -21,8 +21,8 @@ Edit config.js with your own settings
 
 ## Creators
 
-Wypalacz#5909 – [@eichnner](https://twitter.com/eichnner)
+Wypalacz#2929
 
-Djinn#0001 - [@edjinnn](https://twitter.com/djiin)
+Djinn#0001
 
-[https://github.com/WypalaczRun/scriptmanagerdiscordbot](https://github.com/WypalaczRun/scriptmanagerdiscordbot)
+[https://github.com/WypalaczRun/FiveMDiscordBOT](https://github.com/WypalaczRun/FiveMDiscordBOT)
