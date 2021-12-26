@@ -16,12 +16,12 @@ require('./utils/errorHandler')(client);
 
 fs.readdir(`./comandos/`, (err, arquivos) => {
     if (err) console.error(err);
-        arquivos.forEach(cmd => {
-            let comando = require(`./comandos/${cmd}`);
-            console.log(`[CMD] Carregando comando: "${comando.config.nome}"...`);
-            client.comandos.set(comando.config.nome, comando);
-            comando.config.aliases.forEach(alias => {
-            client.aliases.set(alias, comando.config.nome);
+    arquivos.forEach(cmd => {
+        let comando = require(`./comandos/${cmd}`);
+        console.log(`[CMD] Carregando comando: "${comando.config.nome}"...`);
+        client.comandos.set(comando.config.nome, comando);
+        comando.config.aliases.forEach(alias => {
+        client.aliases.set(alias, comando.config.nome);
         });
     });
 });

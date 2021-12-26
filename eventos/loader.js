@@ -11,6 +11,11 @@ module.exports = async client => {
 		client.user.setActivity("zzzZzZ", {
 			type: 'WATCHING'
 		});
+		if (config.mercadopago.enabled) {
+			setInterval(function() {
+				verifyPayments();
+			}, 20000);
+		}
 		function verifyPayments() {
 			client.db.query("SELECT * FROM payments", async (err, rows) => {
 				rows.forEach(async payment => {
@@ -21,30 +26,29 @@ module.exports = async client => {
 						const req = await mercadopago.payment.search({
 							qs: filters
 						})
-						if (req.body.paging.total != 0) {
-							var result = req.body.results[0].status;
-							if (payment.status !== result) {
-								const paymentchannel = client.channels.cache.get(payment.channelid);
-								switch (result) {
-									case "approved":
-										phoenix.createSubscription(payment.discordid,payment.script,payment.channelid,payment.paymentid,result)
-										break;
-									case "pending":
-										await sendChangedStatus("Aguardando Pagamento")
-										break;
-									case "cancelled":
-										phoenix.deleteSubscription(payment.discordid,payment.channelid,payment.paymentid)
-										break;
-								}
-							}
+						if (req.body.paging.total == 0) {
+							return
+						}
+						var result = req.body.results[0].status;
+						if (payment.status === result) {
+							return
+						}
+						const paymentchannel = client.channels.cache.get(payment.channelid);
+						switch (result) {
+							case "approved":
+								phoenix.createSubscription(payment.discordid,payment.script,payment.channelid,payment.paymentid,result)
+								break;
+							case "pending":
+								await sendChangedStatus("Aguardando Pagamento")
+								break;
+							case "cancelled":
+								phoenix.deleteSubscription(payment.discordid,payment.channelid,payment.paymentid)
+								break;
 						}
 					}
 				})
 			})
 		}
-		setInterval(function() {
-			verifyPayments();
-		}, 20000);
 	});
 	client.on("warn", (err) => {
 		console.log(err.message)
